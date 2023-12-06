@@ -3,6 +3,8 @@ import clsx from "clsx";
 import { Nunito, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { createClient } from "@/prismicio";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const nunito = Nunito({
   subsets: ["latin"],
@@ -19,13 +21,13 @@ const nunitoSans = Nunito_Sans({
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
-  const page = await client.getSingle("settings");
+  const settings = await client.getSingle("settings");
 
   return {
-    title: page.data.site_title || "Prismic CMS Example",
-    description: page.data.meta_description || "Propery of Spinnin Studio",
+    title: settings.data.site_title || "Prismic CMS Example",
+    description: settings.data.meta_description || "Propery of Spinnin Studio",
     openGraph: {
-      images: [page.data.og_image.url || ""],
+      images: [settings.data.og_image.url || ""],
     },
   };
 }
@@ -37,7 +39,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx(nunito.variable, nunitoSans.variable)}>
-      <body>{children}</body>
+      <body>
+        <Navbar/>
+        {children}
+        <Footer/>
+        </body>
     </html>
   );
 }
