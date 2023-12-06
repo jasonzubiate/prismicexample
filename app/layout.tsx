@@ -3,7 +3,7 @@ import clsx from "clsx";
 import { Nunito, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { createClient } from "@/prismicio";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const nunito = Nunito({
