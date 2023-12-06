@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: settings.data.site_title || "Prismic CMS Example",
-    description: settings.data.meta_description || "Propery of Spinnin Studio",
+    description: settings.data.meta_description || "Property of Spinnin Studio",
     openGraph: {
       images: [settings.data.og_image.url || ""],
     },
